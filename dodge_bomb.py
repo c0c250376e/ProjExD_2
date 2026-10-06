@@ -30,8 +30,8 @@ def check_bound (rect: pg.Rect) -> tuple[bool,bool]:
 
 def gameover(screen: pg.Surface) -> None:
     gg_img = pg.Surface((WIDTH, HEIGHT))
-    a=pg.Rect(0,0,WIDTH,HEIGHT)
-    pg.draw.rect(gg_img, (0, 0, 0), a)
+    pg.draw.rect(gg_img,(0,0,0),(0,0,800,600))
+    gg_img.get_alpha()
     gg_img.set_alpha(220)
     fonto = pg.font.Font(None, 80)
     txt = fonto.render("Game Over",
