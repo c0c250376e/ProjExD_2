@@ -28,33 +28,34 @@ def check_bound (rect: pg.Rect) -> tuple[bool,bool]:
         tate=False
     return yoko,tate 
 
+
 def gameover(screen: pg.Surface) -> None:
-    gg_img = pg.Surface((WIDTH, HEIGHT))
-    pg.draw.rect(gg_img,(0,0,0),(0,0,800,600))
+    """
+    引数:screen
+    戻り値:なし
+    """
+    gg_img = pg.Surface((WIDTH, HEIGHT)) #空のSurface 
+    pg.draw.rect(gg_img,( 0, 0, 0),( 0, 0, 800, 600)) #黒い矩形を描画
     gg_img.get_alpha()
-    gg_img.set_alpha(220)
+    gg_img.set_alpha(220) #Surfaceの透明度
 
     fonto = pg.font.Font(None, 80)
     txt = fonto.render("Game Over",
-        True, (255, 255, 255))
-    gg_img.blit(txt, [400, 300])
+        True, (255, 255, 255)) #白文字でGame Over
+    gg_img.blit(txt, [400, 300])#Surfaceにblit
 
-    ko_img = pg.image.load("fig/8.png")
+    ko_img = pg.image.load("fig/8.png") #こうかとん画像
     k_rct = ko_img.get_rect()
     k_rct.center = 310, 335
-    gg_img.blit(ko_img, k_rct)
+    gg_img.blit(ko_img, k_rct)#Surfaceにblit
 
-    koo_img = pg.image.load("fig/8.png")
+    koo_img = pg.image.load("fig/8.png")#こうかとん画像
     ko_rct = ko_img.get_rect()
     ko_rct.center = 800, 335
-    gg_img.blit(koo_img, ko_rct)
-    
-    screen.blit(gg_img,[0,0])
+    gg_img.blit(koo_img, ko_rct)#Surfaceにblit
 
-# def init_bb_imags() -> tuple[list[pg.Surface],list[int]]:
-#     bb_imgs=
-
-
+    screen.blit(gg_img,[0,0])#Surfaceをscreen Surfaceにblit
+print(gameover.__doc__)
 
 
 def main():
@@ -83,7 +84,7 @@ def main():
         if kk_rct.colliderect(bb_rct):
             gameover(screen)
             pg.display.update()
-            time.sleep(5)
+            time.sleep(5) #5秒
             print("game over")
             return
 
